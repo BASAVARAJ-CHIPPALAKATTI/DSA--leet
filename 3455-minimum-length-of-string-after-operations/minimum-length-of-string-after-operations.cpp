@@ -8,9 +8,13 @@ public:
         }
         int count=0;
         for(int i=0;i<26;i++){
-             while(freq[i]>2){
-                freq[i]-=2;
-                count+=2;
+             if(freq[i]>=3){
+                if(freq[i]%2==0){
+                    count+=freq[i]-2;
+                }
+                else{
+                    count+=freq[i]-1;
+                }
              }
         }
         return s.size()-count;
