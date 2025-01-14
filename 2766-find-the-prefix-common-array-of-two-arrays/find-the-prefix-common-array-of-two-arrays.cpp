@@ -1,3 +1,5 @@
+/* approach
+  make the freq arry keep track of it if there is freq of 2 than do count of it */
 class Solution {
 public:
     vector<int> findThePrefixCommonArray(vector<int>& A, vector<int>& B) {
