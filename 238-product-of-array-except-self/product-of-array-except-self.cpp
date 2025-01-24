@@ -1,5 +1,5 @@
-// first do left multiplication
-// secode do right multiplication
+// first do left multiplication except curr
+// secode do right multiplication except curr
 class Solution {
 public:
     vector<int> productExceptSelf(vector<int>& nums) {
