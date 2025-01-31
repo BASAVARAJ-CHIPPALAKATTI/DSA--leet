@@ -12,10 +12,10 @@ public:
                 i++;
                 j--;
             }
-            else if(nums[i]+nums[j]< k){
+            else if(nums[i]+nums[j]< k){ //sum is less than k we need to move i val to make sum large
                 i++;
             }
-            else{
+            else{              
                 j--;
             }
         }
