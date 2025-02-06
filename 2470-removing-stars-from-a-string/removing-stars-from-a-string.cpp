@@ -21,6 +21,23 @@ public:
         // reverse(ans.begin(),ans.end());
         // return ans;
 
+
+//  string res;
+//         int n=s.length();
+//         for(int i=0;i<n;i++)
+//         {
+//             if(s[i]=='*')
+//             {
+//                 res.pop_back();
+//             }
+//             else
+//             {
+//                 res.push_back(s[i]);
+//             }
+//         }
+//         return res;
+
+
         int pos=0;
         for( char &c : s){
             if(c=='*'){
