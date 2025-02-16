@@ -1,3 +1,4 @@
+//own
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
@@ -5,7 +6,7 @@ public:
         for(int &num:nums){
             max_heap.push(num);
         }
-        while(k-->1){
+        while(k-- > 1){
             max_heap.pop();
         }
         return max_heap.top();
