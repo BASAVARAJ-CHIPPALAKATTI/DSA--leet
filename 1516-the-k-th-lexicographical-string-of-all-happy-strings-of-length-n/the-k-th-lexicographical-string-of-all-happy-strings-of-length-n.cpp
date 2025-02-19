@@ -18,9 +18,9 @@ public:
             if(!curr.empty() && curr.back()==s){
                 continue;
             }
-            curr.push_back(s);
-            backtrack(n,curr,result);
-            curr.pop_back();
+            curr.push_back(s);  //push
+            backtrack(n,curr,result); //explore
+            curr.pop_back();  //undo
         }
     }
 };
