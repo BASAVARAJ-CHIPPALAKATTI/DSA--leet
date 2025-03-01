@@ -1,3 +1,5 @@
+//sort according to end point
+// count overlap
 class Solution {
 public:
     int eraseOverlapIntervals(vector<vector<int>>& intervals) {
