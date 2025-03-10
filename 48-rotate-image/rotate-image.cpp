@@ -7,14 +7,18 @@ public:
             }
         }
 
+        // for(int i=0;i<matrix.size();i++){
+        //     int j=0;
+        //     int k=matrix.size()-1;
+        //     while(j<k){
+        //         swap(matrix[i][j],matrix[i][k]);
+        //         j++;
+        //         k--;
+        //     }
+        // }
+
         for(int i=0;i<matrix.size();i++){
-            int j=0;
-            int k=matrix.size()-1;
-            while(j<k){
-                swap(matrix[i][j],matrix[i][k]);
-                j++;
-                k--;
-            }
+            reverse(matrix[i].begin(),matrix[i].end());
         }
     }
 };
