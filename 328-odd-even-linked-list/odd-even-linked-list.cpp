@@ -8,6 +8,14 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+  /*
+            Story : 
+            1. Hume odd and even ko segregate karna hai
+            2. To let's take two pointers to point to ODD and EVEN nodes
+            3. Unko alag alag segregate kardenge
+            4. Last me connect kardenge odd ko even se
+            
+        */
 class Solution {
 public:
     ListNode* oddEvenList(ListNode* head) {
@@ -19,7 +27,7 @@ public:
         ListNode* evenst=head->next;
 
         while(even && even->next){
-            odd->next=odd->next->next;
+            odd->next=odd->next->next; //odd->next=even->next;
             even->next=even->next->next;
             odd=odd->next;
             even=even->next;
