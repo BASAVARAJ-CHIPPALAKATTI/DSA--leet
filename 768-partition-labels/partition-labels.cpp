@@ -1,3 +1,6 @@
+// store the last occurance
+// use two pointers 
+
 class Solution {
 public:
     vector<int> partitionLabels(string s) {
