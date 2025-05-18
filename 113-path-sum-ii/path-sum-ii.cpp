@@ -17,7 +17,7 @@ public:
         solve(root,targetSum,currans);
         return ans;
     }
-    void solve(TreeNode* root,int targetSum,vector<int>&currans){
+    void solve(TreeNode* root,int targetSum,vector<int>currans){
         if(!root){
             return ;
         }
