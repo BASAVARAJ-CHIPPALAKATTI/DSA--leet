@@ -30,7 +30,7 @@ public:
         int v=edges[node];
 
         if(v!=-1 && visited[v]==false){
-            visited[v]=true;
+           // visited[v]=true;
             dist[v]=1+dist[node];
             dfs(edges,v,dist,visited);
         }
