@@ -2,6 +2,8 @@
 class Solution {
 public:
     typedef pair<char,int> P;
+    //if it's true than it will return second parameter
+    //else first parameter
     struct comp{
         bool operator()(P &p1, P&p2){
             if(p1.first==p2.first){
