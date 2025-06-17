@@ -8,34 +8,28 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
- /* approach 
- create new dummy listnode
- use simple while loop until carry ,l1,l2 becomes end that much do process
- and store every iteration in dummy
- */
 class Solution {
 public:
     ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
         ListNode* dummy=new ListNode(-1);
-        ListNode* curr1=l1;
-        ListNode* curr2=l2;
-        ListNode* temp=dummy;
+        ListNode* ans=dummy;
         int carry=0;
-        while(carry || curr1 || curr2){
-            int sum=carry;
-            if(curr1){
-                sum+=curr1->val;
-                curr1=curr1->next;
+        while(l1 || l2 || carry>0){
+            int sum=0;
+            if(l1){
+                sum+=l1->val;
+                l1=l1->next;
             }
-            if(curr2){
-                sum+=curr2->val;
-                curr2=curr2->next;
+             if(l2){
+                sum+=l2->val;
+                l2=l2->next;
             }
+            sum+=carry;
+            ListNode* d=new ListNode(sum%10);
+            dummy->next=d;
+            dummy=d;
             carry=sum/10;
-            temp->next=new ListNode(sum%10);
-            temp=temp->next;
-            
         }
-        return dummy->next;
+        return ans->next;
     }
 };
