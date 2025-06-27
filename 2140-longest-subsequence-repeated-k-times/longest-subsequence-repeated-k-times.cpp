@@ -1,76 +1,56 @@
 class Solution {
 public:
-    string result = "";
-
-    bool isSubsequence(string &s, string& sub, int k) {
-        int i = 0;
-        int j = 0;
-        int L = sub.length();
-        int n = s.length();
-
-        while(i < n && j < k*L) {
-            if(s[i] == sub[j%L])
-                j++;
-            
-            i++;
-        }
-
-        return j == k * L;
-    }
-
-    void backtracking(string& s, string &curr, vector<bool>& canUse, vector<int>& requiredFreq, int k, int maxLen) {
-        if(curr.length() > maxLen)
-            return;
-        
-        if((curr.length() > result.length() || (curr.length() == result.length() && curr > result))
-            && isSubsequence(s, curr, k)) {
-                result = curr;
-        }
-
-        for(int i = 0; i <= 25; i++) {
-            if(canUse[i] == false || requiredFreq[i] == 0)
-                continue;
-            
-            //DO
-            char ch = i + 'a';
-            curr.push_back(ch);
-            requiredFreq[i]--;
-
-            //EXPLORE
-            backtracking(s, curr, canUse, requiredFreq, k, maxLen);
-
-            //UNDO
-            curr.pop_back();
-            requiredFreq[i]++;
-
-        }
-
-    }
-
+    string res="";
     string longestSubsequenceRepeatedK(string s, int k) {
-        int n = s.length();
-
-        int freq[26] = {};
-        for(char &ch : s) {
-            freq[ch-'a']++;
+        int n=s.size();
+        vector<int>freq(26,0);
+        for(int i=0;i<n;i++){
+            freq[s[i]-'a']++;
         }
-
-        vector<bool> canUse(26, false);
-        vector<int> requiredFreq(26, 0);
-        for(int i = 0; i < 26; ++i) {
-            if(freq[i] >= k) {
-                canUse[i] = true;
-                requiredFreq[i] = freq[i]/k; //atmost this can be used in a subsequence
+        vector<bool>canuse(26,false);
+        vector<int>requiredfreq(26,0);
+        for(int i=0;i<26;i++){
+            if(freq[i] >= k){
+                canuse[i]=true;
+                requiredfreq[i]=freq[i]/k;
             }
         }
-
-        int maxLen = n / k;
-
+        int maxlen=n/k; //for ans maxlen;
         string curr;
-        backtracking(s, curr, canUse, requiredFreq, k, maxLen);
+        backtracking(s, curr, canuse, requiredfreq, k, maxlen);
+        return res;
+    }
+    void backtracking(string s,string &curr,vector<bool>&canuse,vector<int>&requiredfreq,int k,int maxlen){
+        if(curr.size()> maxlen){
+            return;
+        }
+        if(curr.size() >= res.size() && curr>res && issubseq(curr,s,k) ){
+            res=curr;
+        }
+        for(int i=0;i<26;i++){
+            if(canuse[i]==false || requiredfreq[i] ==0){
+                continue;
+            }
+            char c=i+'a';
+            curr.push_back(c);
+            requiredfreq[i]--;
+            backtracking(s, curr, canuse, requiredfreq, k, maxlen);
 
-        return result;
-
-
+            curr.pop_back();
+            requiredfreq[i]++;
+        }
+    }
+    bool issubseq(string curr,string s,int k){
+        int i=0;
+        int j=0;
+        int n=s.size();
+        int L=curr.size();
+        while(i<n && j<L*k){
+            if(s[i]==curr[j%L]){
+                j++;
+            }
+            i++;
+        }
+        return j==k*L;
     }
 };
