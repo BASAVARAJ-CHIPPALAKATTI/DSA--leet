@@ -1,3 +1,4 @@
+// think about recursion and  reducing size by 2 whenver size exceeds k
 class Solution {
 public:
     char kthCharacter(long long k, vector<int>& operations) {
