@@ -1,26 +1,26 @@
 class Solution {
 public:
+    vector<string>ans;
     string getHappyString(int n, int k) {
-        string curr="";
-        vector<string>result;
-        backtrack(n,curr,result);
-        if(result.size()<k){
+        string curr;
+        solve(n,curr);
+        if(ans.size() <k){
             return "";
         }
-        return result[k-1];
+        return ans[k-1];
     }
-    void backtrack(int n,string curr,vector<string>&result){
+    void solve(int n,string curr){
         if(curr.size()==n){
-            result.push_back(curr);
+            ans.push_back(curr);
             return ;
         }
-        for(char s='a';s<='c';s++){
-            if(!curr.empty() && curr.back()==s){
+        for(int i='a';i<='c';i++){
+            if(!curr.empty() && curr.back()==i){
                 continue;
             }
-            curr.push_back(s);  //push
-            backtrack(n,curr,result); //explore
-            curr.pop_back();  //undo
+            curr.push_back(i);
+            solve(n,curr);
+            curr.pop_back();
         }
     }
 };
