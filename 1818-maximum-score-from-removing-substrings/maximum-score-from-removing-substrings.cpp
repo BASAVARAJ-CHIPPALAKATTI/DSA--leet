@@ -1,3 +1,5 @@
+//easy 
+// first do for maxval either x or y than which were minval
 class Solution {
 public:
     int ans=0;
