@@ -34,3 +34,16 @@ public:
         return ans;
     }
 };
+/*
+1. Frequency Difference Mapping:
+Use an unordered_map to count the net frequency of each item by incrementing for basket1 and decrementing for basket2. If any item has an odd count, it's impossible to equalize the baskets, so return -1.
+
+2. Track Minimum Value:
+While traversing both baskets, track the global minimum value (minval) to potentially use it as a cheap swap cost (twice the minimum can be cheaper than direct swap).
+
+3. Extract Extra Items for Swapping:
+For every value whose frequency difference is non-zero (but even), push half the absolute difference into an array extra_val to prepare for swapping.
+
+4. Cost Minimization Using Sorting:
+Sort the extra_val array and, for the first half (i.e., smallest required swaps), compute the cost using either the value itself or 2 * minval, whichever is smaller — ensuring minimal total swap cost.
+*/
