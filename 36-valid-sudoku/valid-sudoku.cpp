@@ -7,9 +7,9 @@ public:
                 if(board[i][j]=='.'){
                     continue;
                 }
-                string row=string(1,board[i][j]) + "_row_" + to_string(i);
-                string col=string(1,board[i][j]) + "_col_" + to_string(j);
-                string box=string(1,board[i][j]) + "_box_" + to_string(i/3)+to_string(j/3);
+                string row=string(1,board[i][j]) + "row" + to_string(i);
+                string col=string(1,board[i][j]) + "col" + to_string(j);
+                string box=string(1,board[i][j]) + "box" + to_string(i/3)+to_string(j/3);
 
                 if(st.count(row) || st.count(col) || st.count(box)){
                     return false;
