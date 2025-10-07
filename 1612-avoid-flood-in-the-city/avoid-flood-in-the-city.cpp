@@ -16,7 +16,7 @@ public:
             else{
                 ans[i]=-1;
                 if(mp.count(rain)){//if alredy exist flood comes
-                    auto it=st.lower_bound(mp[rain]+1);
+                    auto it=st.upper_bound(mp[rain]);
 
                     if(it==st.end()){
                         //flood comes
