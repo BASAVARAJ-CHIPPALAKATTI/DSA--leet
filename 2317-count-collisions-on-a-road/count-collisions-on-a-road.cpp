@@ -5,7 +5,7 @@ public:
         int n=directions.size();
         int i=0;
         int j=directions.size()-1;
-        while( i < n && directions[i]=='L'){
+        while(   directions[i]=='L' && i < n){
             i++;
         }
         while(j>=0 && directions[j]=='R'){
