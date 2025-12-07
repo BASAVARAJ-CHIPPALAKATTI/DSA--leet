@@ -2,17 +2,18 @@ class Solution {
 public:
     int partitionArray(vector<int>& nums, int k) {
         sort(nums.begin(),nums.end());
+        int partition=0;
         int i=0;
-        int n=nums.size();
         int j=0;
-        int count=0;
+        int n=nums.size();
         while(j<n){
-            while(j<n && abs(nums[i]-nums[j])<=k){
+            while( j<n &&  (nums[j] - nums[i]) <= k){
                 j++;
             }
+            partition++;
             i=j;
-            count++;
         }
-        return count;
+        return partition;
+
     }
 };
