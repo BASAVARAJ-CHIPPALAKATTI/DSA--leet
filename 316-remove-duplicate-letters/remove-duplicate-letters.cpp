@@ -6,24 +6,19 @@ public:
         for(int i=0;i<s.size();i++ ){
             last[s[i]-'a']=i;
         }
-        vector<int>st;
+        string ans="";
         vector<bool>pushed(26,false);
         for(int i=0;i<s.size();i++){
             if(pushed[s[i]-'a']){
                 continue;
             }
-            while(!st.empty() && st.back() > s[i]-'a' && last[st.back()] > i){
-                pushed[st.back()]=false;
-                st.pop_back();
-                
+            while(ans.size()>0 && ans.back()-'a' > s[i]-'a' && last[ans.back()-'a'] > i){
+                pushed[ans.back()-'a']=false;
+                ans.pop_back();
             }
-            st.push_back(s[i]-'a');
-            pushed[s[i]-'a'] =true;
-        }
 
-        string ans="";
-        for(int i=0;i<st.size();i++){
-            ans.push_back(st[i]+'a');
+            ans.push_back(s[i]);
+            pushed[s[i]-'a'] =true;
         }
         return ans;
     }
