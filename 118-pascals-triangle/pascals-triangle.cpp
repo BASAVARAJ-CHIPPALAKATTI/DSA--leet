@@ -4,8 +4,8 @@ public:
         vector<vector<int>>ans(numRows);
         for(int i=0;i<numRows;i++){
             ans[i].assign(i+1,1);
-            for(int j=1;j<=i/2;j++){
-                ans[i][j] = ans[i][i-j] = ans[i-1][j-1] + ans[i-1][j];
+            for(int j=1;j<ans[i].size()-1;j++){
+                ans[i][j]=ans[i-1][j]+ans[i-1][j-1];
             }
         }
         return ans;
