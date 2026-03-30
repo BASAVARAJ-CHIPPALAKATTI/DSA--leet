@@ -4,16 +4,17 @@ public:
     set<vector<int>>st;
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
         vector<int>currans;
+        sort(nums.begin(),nums.end());
         solve(nums,0,currans);
         return ans;
     }
     void solve(vector<int>&nums,int i ,vector<int>currans){
         if(i==nums.size()){
-            vector<int>arr =currans;
-            sort(arr.begin(),arr.end());
-            if(!st.count(arr)){
+            // vector<int>arr =currans;
+            // sort(arr.begin(),arr.end());
+            if(!st.count(currans)){
                 ans.push_back(currans);
-                st.insert(arr);
+                st.insert(currans);
             }
             return;
         }
