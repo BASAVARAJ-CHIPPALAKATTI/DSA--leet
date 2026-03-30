@@ -11,9 +11,8 @@ public:
             ans.push_back(currans);
             return ;
         }
-        currans.push_back(nums[i]);
         solve(nums,i+1,currans);
-        currans.pop_back();
+        currans.push_back(nums[i]);
         solve(nums,i+1,currans);
     }
 };
