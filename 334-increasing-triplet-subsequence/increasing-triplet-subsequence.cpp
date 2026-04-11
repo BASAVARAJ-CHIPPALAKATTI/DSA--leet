@@ -1,17 +1,16 @@
 class Solution {
 public:
     bool increasingTriplet(vector<int>& nums) {
-        int first=INT_MAX;
-        int sec=INT_MAX;
-
-        for(int num : nums){
-            if(num <= first){
-                first=num;
+        int st_small=INT_MAX;
+        int nd_small=INT_MAX;
+        for(int i=0;i<nums.size();i++){
+            if(nums[i] <= st_small){
+                st_small=nums[i];
             }
-            else if(num <= sec){
-                sec=num;
+            else if(nums[i] <= nd_small){
+                nd_small=nums[i];
             }
-            else{  // num is greater than first and sec
+            else{
                 return true;
             }
         }
