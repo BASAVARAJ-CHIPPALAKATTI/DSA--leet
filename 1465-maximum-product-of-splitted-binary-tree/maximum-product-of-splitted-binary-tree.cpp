@@ -10,29 +10,31 @@
  * };
  */
 class Solution {
-public:
-    long totalSum=0;
-    long maxprod=0;
+public: 
     int M=1e9+7;
-    int maxProduct(TreeNode* root) {
-        totalSum=sumfind(root);
-        maxpro(root);
-        return maxprod % M;
-    }
-    long sumfind(TreeNode* root) {
-        if (!root) return 0;
-        return root->val + sumfind(root->left) + sumfind(root->right);
-    }
+    long total_sum=0;
+    long ans=INT_MIN;
 
-    long maxpro(TreeNode* root){
+    int maxProduct(TreeNode* root) {
+        total_sum=find_total_sum(root);
+        find_sum_pro(root);
+        return ans%M;
+    }
+    long find_total_sum(TreeNode* root){
         if(!root){
             return 0;
         }
-        long leftsum=maxpro(root->left);
-        long rightsum=maxpro(root->right);
-        long currsum= root->val + leftsum +rightsum;
+        return root->val+find_total_sum(root->left)+find_total_sum(root->right);
+    }
+    int find_sum_pro(TreeNode* root){
+        if(!root){
+            return 0;
+        }
+        long left=find_sum_pro(root->left);
+        long right=find_sum_pro(root->right);
+        long currans=root->val+left+right;
 
-        maxprod=max(maxprod,currsum*(totalSum-currsum));
-        return currsum;
+        ans=max(ans,(currans*(total_sum-currans)));
+        return currans;
     }
 };
