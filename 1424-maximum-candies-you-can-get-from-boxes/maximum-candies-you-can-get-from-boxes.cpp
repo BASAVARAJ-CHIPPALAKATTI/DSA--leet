@@ -1,36 +1,46 @@
-//do what they told by dfs
-//revision
 class Solution {
 public:
     int maxCandies(vector<int>& status, vector<int>& candies, vector<vector<int>>& keys, vector<vector<int>>& containedBoxes, vector<int>& initialBoxes) {
-        int totalcandies=0;
-        unordered_set<int>visited;
-        unordered_set<int>foundedbox;
+        queue<int>q;
+        int n=status.size();
+        unordered_set<int>havebox;
+        vector<bool>visited(n,false);
+
         for(int box : initialBoxes){
-            totalcandies+=dfs(box,status,candies, keys,containedBoxes,visited,foundedbox);
-        }
-        return totalcandies;
-    }
-    int dfs(int box,vector<int>& status, vector<int>& candies, vector<vector<int>>& keys, vector<vector<int>>& containedBoxes,unordered_set<int>&visited,unordered_set<int>&foundedbox){
-        if(visited.count(box)){
-            return 0;
-        }
-        if(status[box]==0){
-            //but we need to insert
-            foundedbox.insert(box);
-            return 0;
-        }
-        visited.insert(box);
-        int totalcandies=candies[box];
-        for(int containbox :containedBoxes[box]){
-            totalcandies+=dfs(containbox,status,candies, keys,containedBoxes,visited,foundedbox);
-        }
-        for(int keybox:keys[box]){
-            status[keybox]=1;
-            if(foundedbox.count(keybox)){
-                totalcandies+=dfs(keybox,status,candies, keys,containedBoxes,visited,foundedbox);
+            havebox.insert(box);
+            if(status[box]){
+                q.push(box);
+                visited[box]=true;
             }
         }
-        return totalcandies;
+
+        int candy=0;
+        while(!q.empty()){
+            int n=q.size();
+            while(n--){
+                int curr=q.front();
+                q.pop();
+                
+                candy+=candies[curr]; 
+
+                for(int box : containedBoxes[curr]){
+                    havebox.insert(box);
+                    if(status[box] && !visited[box]){
+                        q.push(box);
+                        visited[box]=true;
+                    }
+                }
+                for(int k: keys[curr]){
+                    status[k]=1; // if future comes
+                    //else alredy there box
+                    if(!visited[k] && havebox.count(k)){
+                        q.push(k);
+                        visited[k]=true;
+                    }
+
+                }
+            }
+        }
+        return candy;
     }
 };
