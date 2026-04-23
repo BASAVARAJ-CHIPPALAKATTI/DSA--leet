@@ -7,16 +7,14 @@ public:
         unordered_map<int,int>mp;
         while(j<fruits.size()){
             mp[fruits[j]]++;
-            if(mp.size()<=2){
-                count=max(count,j-i+1);
-            }
-            else{
+            while(mp.size()>2){
                 mp[fruits[i]]--;
                 if(mp[fruits[i]]==0){
                     mp.erase(fruits[i]);
                 }
                 i++;
             }
+            count=max(count,j-i+1);
             j++;
         }
         return count;
