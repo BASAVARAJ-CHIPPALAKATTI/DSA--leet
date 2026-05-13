@@ -1,13 +1,13 @@
-// use stack and store the idx
 class Solution {
 public:
     vector<int> dailyTemperatures(vector<int>& temperatures) {
+        int n=temperatures.size();
+        vector<int>ans(n,0);
         stack<int>st;
-        vector<int>ans(temperatures.size(),0);
-        for(int i=0;i<temperatures.size();i++){
-            while(!st.empty() && temperatures[st.top()]<temperatures[i]){
-                int idx=st.top();
-                ans[idx]=i-idx;
+
+        for(int i=0;i<n;i++){
+            while(!st.empty() && temperatures[st.top()] < temperatures[i]){
+                ans[st.top()] = i-st.top();
                 st.pop();
             }
             st.push(i);
