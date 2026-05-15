@@ -1,10 +1,9 @@
 class Solution {
 public:
-//in these problem we compare two elt min high
     int findMin(vector<int>& nums) {
         int l=0;
         int h=nums.size()-1;
-        while(l < h){
+        while(l<h){
             int mid=l+(h-l)/2;
             if(nums[mid] > nums[h]){
                 l=mid+1;
@@ -14,6 +13,5 @@ public:
             }
         }
         return nums[h];
-
     }
 };
