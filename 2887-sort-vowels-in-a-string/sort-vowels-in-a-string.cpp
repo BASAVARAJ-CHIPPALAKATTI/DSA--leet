@@ -1,27 +1,22 @@
-//easy
 class Solution {
 public:
-    bool isvowel(char c){
-        return (c=='a' )|| (c=='e' )|| (c=='i')||(c=='o')||(c=='u')||(c=='A' )||(c=='E') ||(c=='I')|| (c=='O') || (c=='U');
-    }
-
-
     string sortVowels(string s) {
-        vector<char>vow;
+        vector<char>st;
         for(int i=0;i<s.size();i++){
-            if(isvowel(s[i])){
-                vow.push_back(s[i]);
+            char c=tolower(s[i]);
+            if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
+                st.push_back(s[i]);
             }
         }
-        int j=0;
-        sort(vow.begin(),vow.end());
+        sort(st.begin(),st.end());
+        int idx=0;
         for(int i=0;i<s.size();i++){
-            if(isvowel(s[i])){
-                s[i]=vow[j];
-                j++;
+            char c=tolower(s[i]);
+            if(c=='a' || c=='e' || c=='i' || c=='o' || c=='u'){
+                s[i]=st[idx++];
             }
         }
         return s;
+
     }
-    
 };
