@@ -1,0 +1,34 @@
+class Solution {
+public:
+    string reverseByType(string s) {
+        int i=0;
+        int j=s.size()-1;
+        
+        while(i<j){
+            while(i<j && (s[i] >='a' && s[i]<='z')){
+                i++;
+            }
+            while(i<j && (s[j] >='a' && s[j]<='z')){
+                j--;
+            }
+            swap(s[i],s[j]);
+            i++;
+            j--;
+        }
+
+        i=0;
+        j=s.size()-1;
+        while(i<j){
+            while(i<j && !(s[i] >= 'a' && s[i] <='z')){
+                i++;
+            }
+            while(i<j && !(s[j] >= 'a' && s[j] <='z')){
+                j--;
+            }
+            swap(s[i],s[j]);
+            i++;
+            j--;
+        }
+        return s;
+    }
+};
