@@ -1,20 +1,19 @@
 class Solution {
 public:
     int numberOfSubstrings(string s) {
-        int res=0;
+        vector<int>find(3,0);
         int i=0;
         int j=0;
-        unordered_map<int ,int>mp;
+        int ans=0;
         while(j<s.size()){
-            char c=s[j];
-            mp[c-'a']++;
-            while(mp[0]>0 && mp[1]>0 && mp[2]>0){
-                res+=s.size()-j;
-                mp[s[i]-'a']--;
+            find[s[j]-'a']++;
+            while(find[0] && find[1] && find[2]){
+                ans+=s.size()-j;
+                find[s[i]-'a']--;
                 i++;
             }
             j++;
         }
-        return res;
+        return ans;
     }
 };
